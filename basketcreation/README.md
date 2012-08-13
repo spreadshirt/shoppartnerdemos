@@ -9,10 +9,10 @@ This demo shows how to list shop articles and add them to the basket.
 * download and unzip
 * upload to your htdocs directory
 * open index.php and
-* add shopId at line 42
-* add platform (net/com) at line 44
-* add locale at line 46
-* add api key and secret for basket creation at line 48 and 49
+* add shopId at line 17
+* add platform (net/com) at line 19
+* add locale at line 21
+* add api key and secret for basket creation at line 23 and 25
 
 ## 2. Requirements
 * classic shop
