@@ -6,7 +6,7 @@
 2. Requirements
 
 
-## 1. Installation:
+## 1. Installation
 * unzip spreadshirt-api-example
 * upload to your htdocs directory
 * open index.php
@@ -15,7 +15,7 @@
 ** line 46: add locale
 ** line 48, 50: add api key and secret for basket creation
 
-## 2. Requirements:
+## 2. Requirements
 * classic shop
 * Products with "Free Colour Selection" option. 
 * Spreadshirt API key and API secret (write a mail with your partnerId to developer @spreadshirt.net)
