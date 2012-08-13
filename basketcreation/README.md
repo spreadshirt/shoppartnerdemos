@@ -9,11 +9,11 @@ This demo shows how to list shop articles and add them to the basket.
 ## 1. Installation
 * unzip spreadshirt-api-example
 * upload to your htdocs directory
-* open index.php
-** line 42: add shopId
-** line 44: add platform (net or com)
-** line 46: add locale
-** line 48, 50: add api key and secret for basket creation
+* open index.php and
+> line 42: add shopId
+> line 44: add platform (net or com)
+> line 46: add locale
+> line 48, 50: add api key and secret for basket creation
 
 ## 2. Requirements
 * classic shop
