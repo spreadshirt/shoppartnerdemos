@@ -1,7 +1,7 @@
-# Spreadshirt API Example
+# Spreadshirt basket creation
+This demo shows how to list shop articles and add them to the basket.
 
-## Contents:
-
+## Contents
 1. Installation
 2. Requirements
 
