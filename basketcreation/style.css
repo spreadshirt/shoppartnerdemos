@@ -1,0 +1,52 @@
+@CHARSET "ISO-8859-1";
+ul, li {
+	margin:0;
+	padding:0;
+}
+
+ul.articles{
+  width:932px;
+  margin:auto;
+}
+
+ul.articles li{
+  float:left;
+  width:180px;
+  height:270px;
+  border:1px solid;
+  list-style:none;
+  margin:0 4px 4px 0;
+}
+
+ul.colors li{
+  width:13px;
+  height:13px;
+  margin:0 2px 2px 0;
+  cursor:pointer;
+}
+
+ul.colors li img{
+  float:left;
+}
+
+/* clearfix */
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+ 
+.clearfix {
+	display: inline-block;
+}
+ 
+html[xmlns] .clearfix {
+	display: block;
+}
+ 
+* html .clearfix {
+	height: 1%;
+}
