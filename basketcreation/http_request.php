@@ -16,7 +16,7 @@ function http_request($url, $header = null, $method = 'GET', $data = null, $len 
 
             curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
 
-        break;
+            break;
 
         case 'POST':
 
@@ -34,7 +34,7 @@ function http_request($url, $header = null, $method = 'GET', $data = null, $len 
 
             curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 
-        break;
+            break;
 
         case 'PUT':
 
@@ -62,11 +62,11 @@ function http_request($url, $header = null, $method = 'GET', $data = null, $len 
 
             fclose($putData);
 
-        break;
+            break;
 
         case 'DELETE':
 
-        break;
+            break;
 
     }
 

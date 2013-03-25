@@ -1,9 +1,4 @@
 <?php
-
-/*
- * spreadshirt API functions
- */
-
 function create_basket($platform, $shop, $namespaces) {
 
     $basket = simplexml_load_string('<basket xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://api.spreadshirt.net">
@@ -13,7 +8,7 @@ function create_basket($platform, $shop, $namespaces) {
     $attributes = $shop->baskets->attributes($namespaces['xlink']);
 
     $basketsUrl = $attributes->href;
-    
+
     $header = array();
 
     $header[] = create_auth_header("POST", $basketsUrl);
@@ -49,7 +44,7 @@ function add_basket_item($basketUrl, $namespaces, $data) {
     // 6. Create basket item
 
     $basketItemsUrl = $basketUrl . "/items";
-       
+
     $basketItem = simplexml_load_string('<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
         <basketItem xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://api.spreadshirt.net">
             <quantity>' . $data['quantity'] . '</quantity>
@@ -57,6 +52,7 @@ function add_basket_item($basketUrl, $namespaces, $data) {
                 <properties>
                     <property key="appearance">' . $data['appearance'] . '</property>
                     <property key="size">' . $data['size'] . '</property>
+                    <property key="article">' . $data['articleId'] . '</property>
                 </properties>
             </element>
             <links>
@@ -72,17 +68,17 @@ function add_basket_item($basketUrl, $namespaces, $data) {
     $header[] = "Content-Type: application/xml";
 
     $result = http_request($basketItemsUrl, $header, 'POST', $basketItem->asXML());
-    
-    /*
 
-    $basketItemUrl = parseHttpHeaders($result, "Location");
 
-    sprd_articles_session('basketItem_'.$data['articleId'], $basketItemUrl);
+    echo '<pre>';
+    print_r(get_headers_from_curl_response($result));
+    echo '</pre>';
+
+
+    $basketItemUrl = parse_http_headers($result, "Location");
 
     return $basketItemUrl;
 
-    */
-   
 }
 
 function edit_basket_item($basketItem, $data) {
@@ -101,7 +97,7 @@ function get_basket_item($basketItemUrl) {
 
     $header = array();
 
-    $header[] = create_sprd_auth_header("GET", $basketItemUrl);
+    $header[] = create_auth_header("GET", $basketItemUrl);
 
     $header[] = "Content-Type: application/xml";
 
@@ -199,5 +195,19 @@ function parse_http_headers($header, $headername) {
 
     return $retVal;
 
+}
+
+function get_headers_from_curl_response($response) {
+    $headers = array();
+    $header_text = substr($response, 0, strpos($response, "\r\n\r\n"));
+
+    foreach (explode("\r\n", $header_text) as $i => $line)
+        if ($i === 0)
+            $headers['http_code'] = $line;
+        else {
+            list ($key, $value) = explode(': ', $line);
+            $headers[$key] = $value;
+        }
+    return $headers;
 }
 ?>
